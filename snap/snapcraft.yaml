@@ -1,0 +1,29 @@
+name: memfifo
+version: 0.0.1
+summary: Image loader and interface bandwidth tester for ZTEX USB-FPGA Module 2.16
+description: |
+  memfifo
+  -------
+  This example demonstrates
+
+  * High speed EZ-USB -> FPGA transfers using the default firmware
+    interface
+  * High speed FPGA -> EZ-USB transfers using the default firmware
+    interface
+  * Usage of memory (type depends on FPGA Board, see below)
+confinement: devmode
+grade: stable
+
+apps:
+ memfifo:
+   command: bin/wrapper
+   plugs: 
+     - raw-usb
+
+parts:
+    local:
+        plugin: ant
+        source: .
+    wrapper:
+        plugin: make
+        source: .
