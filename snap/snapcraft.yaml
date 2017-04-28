@@ -1,5 +1,7 @@
 name: memfifo
 version: 0.0.1
+vendor: freshmc <jmasip@fresh-mc.com>
+architectures: [amd64, armhf]
 summary: Image loader and interface bandwidth tester for ZTEX USB-FPGA Module 2.16
 description: |
   memfifo
