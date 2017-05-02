@@ -1,6 +1,6 @@
 name: memfifo
 version: 0.0.1
-architectures: [amd64, armhf]
+architectures: [armhf]
 summary: Image loader and interface bandwidth tester for ZTEX USB-FPGA Module 2.16
 description: |
   memfifo
@@ -23,6 +23,7 @@ apps:
      - home
      - mount-observe
      - network-control
+     - network-bind
 parts:
     local:
         plugin: ant
