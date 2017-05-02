@@ -22,7 +22,7 @@ apps:
      - raw-usb
      - home
      - mount-observe
-     - account-control
+     - network-control
 parts:
     local:
         plugin: ant
