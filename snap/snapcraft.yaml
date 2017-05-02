@@ -12,7 +12,7 @@ description: |
   * High speed FPGA -> EZ-USB transfers using the default firmware
     interface
   * Usage of memory (type depends on FPGA Board, see below)
-confinement: devmode
+confinement: strict #devmode
 grade: stable
 
 apps:
