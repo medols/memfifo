@@ -20,7 +20,9 @@ apps:
    command: bin/wrapper
    plugs: 
      - raw-usb
-
+     - home
+     - mount-observe
+     - account-control
 parts:
     local:
         plugin: ant
