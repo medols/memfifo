@@ -18,8 +18,6 @@ grade: stable
 apps:
  memfifo:
    command: bin/wrapper
-   user: true
-   group: true
    plugs: 
      - raw-usb
      - home
