@@ -1,0 +1,70 @@
+ubuntu@ubuntu:~$ cat /etc/os-release
+NAME="Ubuntu"
+VERSION="16.04.2 LTS (Xenial Xerus)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 16.04.2 LTS"
+VERSION_ID="16.04"
+HOME_URL="http://www.ubuntu.com/"
+SUPPORT_URL="http://help.ubuntu.com/"
+BUG_REPORT_URL="http://bugs.launchpad.net/ubuntu/"
+VERSION_CODENAME=xenial
+UBUNTU_CODENAME=xenial
+
+ubuntu@ubuntu:~$ uname -a
+Linux ubuntu 4.4.0-1054-raspi2 #61-Ubuntu SMP Wed Apr 12 13:29:10 UTC 2017 armv7l armv7l armv7l GNU/Linux
+
+ubuntu@ubuntu:~$ sudo snap install fwloader --devmode
+fwloader 0.0.1 from 'freshmc' installed
+
+ubuntu@ubuntu:~$ sudo snap install memfifo --devmode
+memfifo 0.0.1 from 'freshmc' installed
+
+ubuntu@ubuntu:~$ snap list
+Name            Version  Rev   Developer  Notes
+core            16-2     1690  canonical  -
+fwloader        0.0.1    4     freshmc    devmode
+memfifo         0.0.1    15    freshmc    devmode
+
+ubuntu@ubuntu:~$ make
+sudo /snap/bin/fwloader -f -uu default.ihx -uf topproc_9fpu2n1s_1809_1.bit
+Firmware upload time: 187 ms
+FPGA configuration time: 476 ms
+
+ubuntu@ubuntu:~$ sudo memfifo
+Found ZTEX USB-FPGA Module 2.16b,  using bitstream fpga-2.16/memfifo.runs/impl_2_16b/memfifo.bit
+FPGA configuration time: 211 ms
+48 MByte/s test data generator: 
+2s read only test: 37 MByte/s
+2s read only test: 37 MByte/s
+2s read only test: 37 MByte/s
+2s read only test: 37 MByte/s
+Buffer 999: 0 sync errors,    0 memory or transfer errors                 
+Read + verify data rate: 2 MByte/s
+
+12 MByte/s test data generator: 
+Buffer 499: 0 sync errors,    0 memory or transfer errors                 
+
+PKTEND tests (may not work on all platforms)
+Manual PKTEND test (1/2):
+Buffer 28(short packet): 0 sync errors,    0 memory or transfer errors                 
+Seems to work: received 28717*512 + 4 bytes
+Manual PKTEND test (2/2):
+Buffer 28(short packet): 0 sync errors,    0 memory or transfer errors                 
+Seems to work: received 28714*512 + 4 bytes
+Automatic PKTEND assertion after 0.5s timeout test:
+Buffer 10(short packet): 0 sync errors,    0 memory or transfer errors                 
+Seems to work: received 10244*512 + 0 bytes
+Zero length packet test:
+Received no data for buffer 0                                  
+Seems to work: received 0 bytes
+
+USB write + read mode: on some USB implementations concurrent reading / writing may cause deadlocks or timeout errors
+USB write + read mode: speed test
+Buffer 0(short packet): 0 sync errors,    0 memory or transfer errors                 
+Read + Write data rate: 0 MByte/s
+USB write + read mode: 10 MByte/s read test
+Received no data for buffer 1                                           
+
+ubuntu@ubuntu:~$ 
+

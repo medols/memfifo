@@ -1,0 +1,72 @@
+ubuntu@ubuntu:~/ztex$ cat /etc/os-release 
+NAME="Ubuntu"
+VERSION="16.04.2 LTS (Xenial Xerus)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 16.04.2 LTS"
+VERSION_ID="16.04"
+HOME_URL="http://www.ubuntu.com/"
+SUPPORT_URL="http://help.ubuntu.com/"
+BUG_REPORT_URL="http://bugs.launchpad.net/ubuntu/"
+VERSION_CODENAME=xenial
+UBUNTU_CODENAME=xenial
+
+ubuntu@ubuntu:~/ztex$ uname -a
+Linux ubuntu 4.4.0-31-generic #50-Ubuntu SMP Wed Jul 13 00:07:12 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
+
+ubuntu@ubuntu:~/ztex$ sudo snap install fwloader --candidate --devmode
+fwloader (candidate) 0.0.1 from 'freshmc' installed
+
+ubuntu@ubuntu:~/ztex$ sudo snap install memfifo --candidate --devmode
+memfifo (candidate) 0.0.1 from 'freshmc' installed
+
+ubuntu@ubuntu:~/ztex$ snap list
+Name      Version  Rev   Developer  Notes
+core      16-2     1689  canonical  -
+fwloader  0.0.1    3     freshmc    devmode
+memfifo   0.0.1    14    freshmc    devmode
+
+ubuntu@ubuntu:~/ztex$ make
+sudo fwloader -f -uu default.ihx -uf topproc_9fpu2n1s_1809_1.bit
+Firmware upload time: 143 ms
+FPGA configuration time: 682 ms
+
+ubuntu@ubuntu:~/ztex$ snap list
+Name      Version  Rev   Developer  Notes
+core      16-2     1689  canonical  -
+fwloader  0.0.1    3     freshmc    devmode
+memfifo   0.0.1    14    freshmc    devmode
+ubuntu@ubuntu:~/ztex$ sudo memfifo
+Found ZTEX USB-FPGA Module 2.16b,  using bitstream fpga-2.16/memfifo.runs/impl_2_16b/memfifo.bit
+FPGA configuration time: 286 ms
+48 MByte/s test data generator: 
+2s read only test: 25 MByte/s
+2s read only test: 25 MByte/s
+2s read only test: 25 MByte/s
+2s read only test: 25 MByte/s
+Buffer 999: 0 sync errors,    0 memory or transfer errors                 
+Read + verify data rate: 26 MByte/s
+
+12 MByte/s test data generator: 
+Buffer 499: 0 sync errors,    0 memory or transfer errors                 
+
+PKTEND tests (may not work on all platforms)
+Manual PKTEND test (1/2):
+Buffer 21(short packet): 0 sync errors,    0 memory or transfer errors                 
+Seems to work: received 21562*512 + 32 bytes
+Manual PKTEND test (2/2):
+Buffer 21(short packet): 0 sync errors,    0 memory or transfer errors                 
+Seems to work: received 21612*512 + 68 bytes
+Automatic PKTEND assertion after 0.5s timeout test:
+Error during PKTEND tests: ztex.UsbException: bus=1 device=4 port=1: Error receving buffer 1554: 2
+
+USB write + read mode: on some USB implementations concurrent reading / writing may cause deadlocks or timeout errors
+USB write + read mode: speed test
+Buffer 53: 0 sync errors,    1 memory or transfer errors                 
+Buffer 749: 0 sync errors,    0 memory or transfer errors                 
+Read + Write data rate: 19 MByte/s
+USB write + read mode: 10 MByte/s read test
+Buffer 299: 0 sync errors,    0 memory or transfer errors                 
+
+ubuntu@ubuntu:~/ztex$  
+
