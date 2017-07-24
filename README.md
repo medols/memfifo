@@ -1,5 +1,7 @@
 # Memfifo Snap
 
+ [![Snap Status](https://build.snapcraft.io/badge/medols/memfifo.svg)](https://build.snapcraft.io/user/medols/memfifo)
+
 ## Snap content
 
 Interface bandwidth tester for ZTEX USB-FPGA Module 2.16.
